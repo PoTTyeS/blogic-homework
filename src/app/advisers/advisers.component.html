@@ -1,0 +1,22 @@
+
+<table class="table table-striped">  
+    <thead>  
+        <tr>  
+          <th>Jméno</th>  
+          <th>Přijmení</th>  
+          <th>Email</th>  
+          <th>Nástroje</th>  
+        </tr>  
+    </thead>  
+    <tbody>  
+        <tr *ngFor="let clientData of clientsData"><td>
+            <a href="clients/detail/{{ clientData.id }}">{{ clientData.firstName }}</a></td>
+            <td>{{ clientData.lastName }}</td>
+            <td>{{ clientData.email }}</td>
+            <td>
+                <button (click)="editClient( clientData.id )">Edit</button>
+                <button (click)="removeClient( clientData.id )">Remove</button>
+            </td>
+        </tr>
+    </tbody>  
+  </table>  

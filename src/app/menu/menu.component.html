@@ -1,0 +1,12 @@
+<nav *ngIf="isLogged else kokot">
+    <a class="button" routerLink="/contracts">Smlouvy</a>
+    <a class="button" routerLink="/clients">Klienti</a>
+    <a class="button" routerLink="/advisers">Poradci</a>
+    <a class="button" routerLink="/logout">Odhlásit se</a>
+</nav>
+
+<ng-template #kokot>
+    <nav>
+        <a class="button" routerLink="/login">Přihlášení</a>
+    </nav>
+</ng-template>
