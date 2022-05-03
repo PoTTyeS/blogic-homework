@@ -14,8 +14,8 @@ export class MenuComponent implements OnInit {
     private clientService: ClientService
   ) { }
 
-  ngOnInit(): void {
-    this.isLogged = Object.keys(this.clientService.getClientData()).length > 0 ? true : false;
+  ngOnInit() {
+    this.isLogged = this.clientService.isLogged;
   }
 
 }

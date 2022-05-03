@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from "@angular/router"
 import { ApiService } from '../api.service';
 import { ClientService } from '../client.service';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
     private clientService: ClientService
   ) { };
 
-  ngOnInit(): void { };
+  ngOnInit(): void { 
+  };
 
   /* Login Form */
   loginForm = new FormGroup({
@@ -45,7 +46,10 @@ export class LoginComponent implements OnInit {
     this.clientService.initClientData(data);
     
     // Redirect
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['/contracts']);
+    
 
     // Response data 
     console.log(data);

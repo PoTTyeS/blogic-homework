@@ -17,20 +17,30 @@ import { LogoutComponent } from './logout/logout.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
+import { CommonModule } from '@angular/common';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ContractDetailComponent } from './contract-detail/contract-detail.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
+    ClientDetailComponent,
+    ContractsComponent,
+    ContractDetailComponent,
     MenuComponent,
     LoginComponent,
     AddContractComponent,
     AdvisersComponent,
     EditContractComponent,
     LogoutComponent,
+    ContractDetailComponent,
+    HeaderComponent,
   ],
   imports: [
-    AngularMultiSelectModule,
+    CommonModule,
+    NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
@@ -41,6 +51,7 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
       {path: 'clients/detail/:id', component: ClientDetailComponent},
       {path: 'advisers', component: AdvisersComponent},
       {path: 'contracts', component: ContractsComponent},
+      {path: 'contract/detail/:id', component: ContractDetailComponent},
       {path: 'add-contract', component: AddContractComponent},
       {path: 'edit-contract', component: EditContractComponent},
       {path: 'logout', component: LogoutComponent},

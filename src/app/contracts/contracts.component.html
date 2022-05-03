@@ -1,5 +1,4 @@
-<!-- Trigger/Open The Modal -->
-<button (click)="showModal()" class="btn btn-primary">Přidat smlouvu</button>
+<app-menu></app-menu>
 
 <!-- The Modal -->
 <div id="myModal" class="modal" [style.display]="modalIsHidden ? 'block' : 'none'">
@@ -8,15 +7,84 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close" (click)="showModal()">&times;</span>
-      <h2>Modal Header</h2>
+      <h2>Přidání smlouvy</h2>
     </div>
     <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
+      <div style="width:50%">
+        <form [formGroup]="contractForm" (ngSubmit)="addContract()">
+          <label >Evidenční číslo: </label>
+          <input id="first-name" type="text" formControlName="registrationNumber">
+      
+          <label for="last-name">Instituce: </label>
+          <select formControlName="institution">
+            <option value="čsob">čsob</option>
+            <option value="jaro">jaro</option>
+            <option value="liška">liška</option>
+          </select>
+          
+          <label for="last-name">Klient: </label>
+          <input id="last-name" type="text" formControlName="client">
+
+          <label for="last-name">Datum uzavření: </label>
+          <input id="last-name" type="text" formControlName="dateClosed">
+      
+          <label for="last-name">Datum platnosti: </label>
+          <input id="last-name" type="number" formControlName="dateExpiration">
+          
+          <label for="last-name">Datum ukončení: </label>
+          <input id="last-name" type="number" formControlName="dateEnd">
+   
+          <label for="last-name">Účastníci smlouvy: </label>
+          <ng-multiselect-dropdown
+            [settings]="dropdownSettings"
+            [data]="dropdownList"
+            formControlName="contractMembers">
+          </ng-multiselect-dropdown>
+
+          <label for="last-name">Správce smlouvy: </label>
+          <ng-multiselect-dropdown
+            [settings]="dropdownSettings"
+            [data]="dropdownList"
+            formControlName="contractManager">
+          </ng-multiselect-dropdown>
+         
+          <button type="submit">Přidat smlouvu</button>
+      </form>
+    </div>
     </div>
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
     </div>
   </div>
 
+</div>
+
+<div class="content">
+<!-- Trigger/Open The Modal -->
+<button (click)="showModal()" class="btn buttonCreate btn-primary">Přidat smlouvu</button>
+
+<table class="table table-striped">  
+  <thead>  
+      <tr>  
+        <th>Evidenční číslo</th>  
+        <th>Klient</th>  
+        <th>Správce</th>  
+        <th>Datum uzavření</th>  
+      </tr>  
+  </thead>  
+  <tbody>  
+      <tr *ngFor="let contractData of contractsData">
+        <td>
+          <a href="contract/detail/{{ contractData.id }}">
+            {{ contractData.registration_number }}
+          </a>
+        </td>
+        <td>{{ contractData.institution }}</td>
+        <td>{{ contractData.client }}</td>
+        <td>
+           <button class="btn btn-warning"> Edit</button> &nbsp;
+           <button class="btn btn-danger" (click)="removeContract( contractData.id )">Remove</button>
+        </td>
+      </tr>
+  </tbody>  
+</table>  
 </div>

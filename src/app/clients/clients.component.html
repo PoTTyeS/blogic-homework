@@ -1,8 +1,10 @@
-
+<app-menu></app-menu>
+<div class="content">
 <!-- Trigger/Open The Modal -->
-<button (click)="showModal()" class="btn btn-primary">Přidání klienta/poradce</button>
+<button (click)="showModal()" class="btn buttonCreate btn-primary">Přidání klienta/poradce</button>
 
-<!-- The Modal -->
+
+<!-- The Modal for create Client/Adviser -->
 <div id="myModal" class="modal" [style.display]="modalIsHidden ? 'block' : 'none'">
 
   <!-- Modal content -->
@@ -42,6 +44,46 @@
   </div>
 </div>
 
+<!-- The Modal for update Client/Adviser -->
+<div id="myModal" class="modal" [style.display]="modalUpdateIsHidden ? 'block' : 'none'">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" (click)="hideModal()">&times;</span>
+      <h2>Přidání klienta nebo poradce</h2>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="clientUpdateForm" (ngSubmit)="saveData(editClientsData)">
+
+            <label for="first-name">Jméno: </label>
+            <input id="first-name" type="text" formControlName="firstName">
+        
+            <label for="last-name">Přijmení: </label>
+            <input id="last-name" type="text" formControlName="lastName">
+        
+            <label for="last-name">Email: </label>
+            <input id="last-name" type="text" formControlName="email">
+        
+            <label for="last-name">Mobil: </label>
+            <input id="last-name" type="number" formControlName="mobile">
+        
+            <label for="last-name">Rodné číslo: </label>
+            <input id="last-name" type="text" formControlName="rc">
+        
+            <label for="last-name">Věk: </label>
+            <input id="last-name" type="number" formControlName="age">
+
+            <label for="last-name">Poradcový status (0 - klient, 1 - poradce): </label>
+            <input id="last-name" type="number" value="{{ editClientsData.adviserStatus }}" formControlName="adviserStatus">
+            
+            <button type="submit">Update Data</button>
+        </form>
+    </div>
+    <div class="modal-footer"></div>
+  </div>
+</div>
+
 <table class="table table-striped">  
     <thead>  
         <tr>  
@@ -57,9 +99,11 @@
             <td>{{ clientData.lastName }}</td>
             <td>{{ clientData.email }}</td>
             <td>
-                <button (click)="editClient( clientData.id )">Edit</button>
-                <button (click)="removeClient( clientData.id )">Remove</button>
+                <button class="btn btn-warning" (click)="editClient( clientData.id )">Edit</button> &nbsp;
+                <button class="btn btn-danger" (click)="removeClient( clientData.id )">Remove</button>
             </td>
         </tr>
     </tbody>  
   </table>  
+
+</div>

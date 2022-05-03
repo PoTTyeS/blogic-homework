@@ -16,6 +16,10 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientService.clearClientData();
+
+    // Refresh component
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['/']);
   }
 

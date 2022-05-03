@@ -15,6 +15,7 @@ export class ClientDetailComponent implements OnInit {
   /* Variables */
   id: any;
   detailData: IClientData = {
+    id: "",
     firstName: "",
     lastName: "",
     email:"",
