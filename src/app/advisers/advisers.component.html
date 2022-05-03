@@ -54,7 +54,10 @@
               <input id="last-name" type="number" formControlName="age">
   
               <label for="last-name">Poradcový status (0 - klient, 1 - poradce): </label>
-              <input id="last-name" type="number" formControlName="adviserStatus">
+              <select formControlName="adviserStatus">
+                <option value="1">Poradce</option>
+                <option value="0">Klient</option>
+              </select>
               
               <button type="submit">Update Data</button>
           </form>

@@ -20,6 +20,7 @@ export class ContractsComponent implements OnInit {
   dropdownSettings:IDropdownSettings={};
   modalIsHidden: boolean = false;
   contractsData: any;
+  conctractDataNew: any;
 
   constructor(
     private apiServer: ApiService,
@@ -53,6 +54,7 @@ export class ContractsComponent implements OnInit {
     };
     const data = await this.apiServer.get({ url: '/contracts'});
     this.contractsData = data?.results;
+    console.log('LOLO', this.contractsData);
   }
 
   /**
@@ -67,7 +69,7 @@ export class ContractsComponent implements OnInit {
    * @param contractsData data submited in contract form
    */
   addContract(){
-    this.contractsData = {
+    this.conctractDataNew = {
       registrationNumber: this.contractForm.value.registrationNumber,
       institution: this.contractForm.value.institution,
       client: this.contractForm.value.client,
@@ -78,13 +80,12 @@ export class ContractsComponent implements OnInit {
       contractManager: this.contractForm.value.contractManager,
     }
   
+    console.log(this.conctractDataNew)
     /*
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
       this.router.onSameUrlNavigation = 'reload';
       this.router.navigate(['/contracts']);
     */
-
-    console.log(this.contractsData);
   }
 
   /**

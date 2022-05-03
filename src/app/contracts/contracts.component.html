@@ -69,6 +69,7 @@
         <th>Klient</th>  
         <th>Správce</th>  
         <th>Datum uzavření</th>  
+        <th>Nástroje</th>  
       </tr>  
   </thead>  
   <tbody>  
@@ -80,6 +81,7 @@
         </td>
         <td>{{ contractData.institution }}</td>
         <td>{{ contractData.client }}</td>
+        <td></td>
         <td>
            <button class="btn btn-warning"> Edit</button> &nbsp;
            <button class="btn btn-danger" (click)="removeContract( contractData.id )">Remove</button>
