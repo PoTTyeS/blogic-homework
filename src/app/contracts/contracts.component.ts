@@ -38,7 +38,6 @@ export class ContractsComponent implements OnInit {
 
   constructor(
     private apiServer: ApiService,
-    private clientsService: ClientsService,
     private clientService: ClientService,
     private router: Router,
     private csvService: CSVService
@@ -159,37 +158,37 @@ export class ContractsComponent implements OnInit {
     this.router.navigate(['/contracts']);
   }
 
-/**
+  /**
    * Edit contract to the database
    * @param conctractDataNew data submited in contract form
    * @returns - redirect and it shows that data were added
    * */
- async saveData(data:any){
+  async saveData(data:any){
 
-  // data of edited user
-  const editedContractData = {
-    id: this.conctractsDataEdited["id"],
-    registrationNumber: this.contractUpdateForm.value.registrationNumber,
-    institution: this.contractUpdateForm.value.institution,
-    client: this.contractUpdateForm.value.client,
-    dateClosed: this.contractUpdateForm.value.dateClosed,
-    dateExpiration: this.contractUpdateForm.value.dateExpiration,
-    dateEnd: this.contractUpdateForm.value.dateEnd,
-    contractMembers: JSON.stringify(this.contractUpdateForm.value.contractMembers),
-    contractManager: JSON.stringify(this.contractUpdateForm.value.contractManager)
+    // data of edited user
+    const editedContractData = {
+      id: this.conctractsDataEdited["id"],
+      registrationNumber: this.contractUpdateForm.value.registrationNumber,
+      institution: this.contractUpdateForm.value.institution,
+      client: this.contractUpdateForm.value.client,
+      dateClosed: this.contractUpdateForm.value.dateClosed,
+      dateExpiration: this.contractUpdateForm.value.dateExpiration,
+      dateEnd: this.contractUpdateForm.value.dateEnd,
+      contractMembers: JSON.stringify(this.contractUpdateForm.value.contractMembers),
+      contractManager: JSON.stringify(this.contractUpdateForm.value.contractManager)
+    }
+
+    // Send data to server and edit client
+    const res = await this.apiServer.post({
+      url: '/updateContract',
+      data: editedContractData
+    });
+
+    // Refresh component
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/contracts']);
   }
-
-  // Send data to server and edit client
-  const res = await this.apiServer.post({
-    url: '/updateContract',
-    data: editedContractData
-  });
-
-  // Refresh component
-  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  this.router.onSameUrlNavigation = 'reload';
-  this.router.navigate(['/contracts']);
-}
 
   /**
    * Remove contract

@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from "@angular/router"
 import { ApiService } from '../api.service';
 import { ClientService } from '../client.service';
-import * as $ from 'jquery';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
