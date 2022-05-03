@@ -1,7 +1,9 @@
 <app-menu></app-menu>
 <div class="content">
-
-  <button (click)="showModal()" class="btn buttonCreate btn-primary">Přidat smlouvu</button>
+  <div class="content-header-flex">
+    <button (click)="showModal()" class="btn buttonCreate btn-primary">Přidat smlouvu</button>
+    <button (click)="exportToCSV()" class="btn buttonCreate btn-warning">Export CSV</button>
+  </div>
   
   <table class="table table-striped">  
     <thead>  
@@ -43,43 +45,43 @@
     <div class="modal-body">
       <div style="width:50%">
         <form [formGroup]="contractForm" (ngSubmit)="addContract()">
-          <label>Evidenční číslo: </label>
-          <input type="text" formControlName="registrationNumber">
+          <label>Evidenční číslo: </label><br>
+          <input type="text" formControlName="registrationNumber"><br>
       
-          <label>Instituce: </label>
+          <label>Instituce: </label><br>
           <select formControlName="institution">
             <option value="čsob">čsob</option>
             <option value="jaro">jaro</option>
             <option value="liška">liška</option>
-          </select>
+          </select><br>
           
-          <label>Klient: </label>
-          <input type="text" formControlName="client">
+          <label>Klient: </label><br>
+          <input type="text" formControlName="client"><br>
 
-          <label>Datum uzavření: </label>
-          <input type="text" formControlName="dateClosed">
+          <label>Datum uzavření: </label><br>
+          <input type="text" formControlName="dateClosed"><br>
       
-          <label>Datum platnosti: </label>
-          <input type="text" formControlName="dateExpiration">
+          <label>Datum platnosti: </label><br>
+          <input type="text" formControlName="dateExpiration"><br>
           
-          <label>Datum ukončení: </label>
-          <input type="text" formControlName="dateEnd">
+          <label>Datum ukončení: </label><br>
+          <input type="text" formControlName="dateEnd"><br>
    
-          <label>Účastníci smlouvy: </label>
+          <label>Účastníci smlouvy: </label><br>
           <ng-multiselect-dropdown
             [settings]="dropdownSettings"
             [data]="dropdownList"
             formControlName="contractMembers">
           </ng-multiselect-dropdown>
 
-          <label>Správce smlouvy: </label>
+          <label>Správce smlouvy: </label><br>
           <ng-multiselect-dropdown
             [settings]="dropdownSettings"
             [data]="dropdownList"
             formControlName="contractManager">
           </ng-multiselect-dropdown>
          
-          <button type="submit">Přidat smlouvu</button>
+          <button class="btn btn-primary btnSave" type="submit">Přidat smlouvu</button>
         </form>
       </div>
     </div>
@@ -98,43 +100,43 @@
     <div class="modal-body">
       <div style="width:50%">
         <form [formGroup]="contractUpdateForm" (ngSubmit)="saveData(conctractsDataEdited)">
-          <label>Evidenční číslo: </label>
-          <input type="text" formControlName="registrationNumber">
+          <label>Evidenční číslo: </label><br>
+          <input type="text" formControlName="registrationNumber"><br>
       
-          <label>Instituce: </label>
+          <label>Instituce: </label><br>
           <select formControlName="institution">
             <option value="čsob">čsob</option>
             <option value="jaro">jaro</option>
             <option value="liška">liška</option>
-          </select>
+          </select><br>
           
-          <label>Klient: </label>
-          <input type="text" formControlName="client">
+          <label>Klient: </label><br>
+          <input type="text" formControlName="client"><br>
 
-          <label>Datum uzavření: </label>
-          <input type="text" formControlName="dateClosed">
+          <label>Datum uzavření: </label><br>
+          <input type="text" formControlName="dateClosed"><br>
       
-          <label>Datum platnosti: </label>
-          <input type="text" formControlName="dateExpiration">
+          <label>Datum platnosti: </label><br>
+          <input type="text" formControlName="dateExpiration"><br>
           
-          <label>Datum ukončení: </label>
-          <input type="text" formControlName="dateEnd">
+          <label>Datum ukončení: </label><br>
+          <input type="text" formControlName="dateEnd"><br>
    
-          <label>Účastníci smlouvy: </label>
+          <label>Účastníci smlouvy: </label><br>
           <ng-multiselect-dropdown
             [settings]="dropdownSettings"
             [data]="dropdownList"
             formControlName="contractMembers">
           </ng-multiselect-dropdown>
 
-          <label>Správce smlouvy: </label>
+          <label>Správce smlouvy: </label><br>
           <ng-multiselect-dropdown
             [settings]="dropdownSettings"
             [data]="dropdownList"
             formControlName="contractManager">
           </ng-multiselect-dropdown>
          
-          <button type="submit">Přidat smlouvu</button>
+          <button class="btn btn-primary btnSave" type="submit">Upravit smlouvu</button>
         </form>
       </div>
     </div>

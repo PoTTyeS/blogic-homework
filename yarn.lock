@@ -1318,6 +1318,11 @@
   "resolved" "https://registry.npmjs.org/@types/cors/-/cors-2.8.12.tgz"
   "version" "2.8.12"
 
+"@types/downloadjs@^1.4.3":
+  "integrity" "sha512-MjJepFle/tLtT2/jmDNth6ZnwWzEhm40L+olE5HKR70ISUCfgT55eqreeHldAzFLY2HDUGsn8zgyto8KygN0CA=="
+  "resolved" "https://registry.npmjs.org/@types/downloadjs/-/downloadjs-1.4.3.tgz"
+  "version" "1.4.3"
+
 "@types/eslint-scope@^3.7.0":
   "integrity" "sha512-PB3ldyrcnAicT35TWPs5IcwKD8S333HMaa2VVv4+wdvebJkjWuW/xESoB8IwRcog8HYVYamb1g/R31Qv5Bx03g=="
   "resolved" "https://registry.npmjs.org/@types/eslint-scope/-/eslint-scope-3.7.3.tgz"
@@ -1617,6 +1622,11 @@
     "json-schema-traverse" "^1.0.0"
     "require-from-string" "^2.0.2"
     "uri-js" "^4.2.2"
+
+"angular-csv-ext@^1.0.5":
+  "integrity" "sha512-KBymMa7vVW0FlQr4AX6rRijyL9uak4gvrdc706TEDFLKNzE/UjB6dl/GqPVd72yV89uIRuT87kBcbNEc8HMNtQ=="
+  "resolved" "https://registry.npmjs.org/angular-csv-ext/-/angular-csv-ext-1.0.5.tgz"
+  "version" "1.0.5"
 
 "angular2-multiselect-dropdown@^5.0.4":
   "integrity" "sha512-HpxgFIoAaNzJwdeWq3mjw0V/K9CBaan7pdlIbQ+CuHy29qfDWvPGj23veTcFvzuDA1qbllTQiI1px4O+zKfQUw=="
@@ -2581,6 +2591,11 @@
     "dom-serializer" "^1.0.1"
     "domelementtype" "^2.2.0"
     "domhandler" "^4.2.0"
+
+"downloadjs@^1.4.7":
+  "integrity" "sha1-9p+W+UDg0FU9rCkROYZaPNAQHjw="
+  "resolved" "https://registry.npmjs.org/downloadjs/-/downloadjs-1.4.7.tgz"
+  "version" "1.4.7"
 
 "duplexer@^0.1.1", "duplexer@~0.1.1":
   "integrity" "sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg=="
@@ -3625,11 +3640,6 @@
     "@types/node" "*"
     "merge-stream" "^2.0.0"
     "supports-color" "^8.0.0"
-
-"jquery@^3.6.0":
-  "integrity" "sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw=="
-  "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz"
-  "version" "3.6.0"
 
 "js-tokens@^4.0.0":
   "integrity" "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ=="

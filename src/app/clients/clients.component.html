@@ -1,8 +1,10 @@
 <app-menu></app-menu>
 <div class="content">
-
-  <button (click)="showModal()" class="btn buttonCreate btn-primary">Přidání klienta/poradce</button>
-
+  <div class="content-header-flex">
+    <button (click)="showModal()" class="btn buttonCreate btn-primary">Přidání klienta/poradce</button>
+    <button (click)="exportToCSV()" class="btn buttonCreate btn-warning">Export CSV</button>
+  </div>
+  
   <table class="table table-striped">  
     <thead>  
         <tr>  
@@ -35,36 +37,36 @@
 <div id="myModal" class="modal" [style.display]="modalIsHidden ? 'block' : 'none'">
   <div class="modal-content">
     <div class="modal-header">
+      <h3>Přidání klienta nebo poradce</h3>
       <span class="close" (click)="showModal()">&times;</span>
-      <h2>Přidání klienta nebo poradce</h2>
     </div>
     <div class="modal-body">
       <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
-        <label>Jméno: </label>
-        <input type="text" formControlName="firstName">
+        <label>Jméno: </label><br>
+        <input type="text" formControlName="firstName"><br>
       
-        <label>Přijmení: </label>
-        <input type="text" formControlName="lastName">
+        <label>Přijmení: </label><br>
+        <input type="text" formControlName="lastName"><br>
       
-        <label>Email: </label>
-        <input type="text" formControlName="email">
+        <label>Email: </label><br>
+        <input type="text" formControlName="email"><br>
       
-        <label>Mobil: </label>
-        <input type="number" formControlName="mobile">
+        <label>Mobil: </label><br>
+        <input type="number" formControlName="mobile"><br>
       
-        <label>Rodné číslo: </label>
-        <input type="text" formControlName="rc">
+        <label>Rodné číslo: </label><br>
+        <input type="text" formControlName="rc"><br>
       
-        <label>Věk: </label>
-        <input type="number" formControlName="age">
+        <label>Věk: </label><br>
+        <input type="number" formControlName="age"><br>
 
-        <label>Poradcový status (0 - klient, 1 - poradce): </label>
+        <label>Poradcový status: </label><br>
         <select formControlName="adviserStatus">
           <option value="1">Poradce</option>
           <option value="0">Klient</option>
-        </select>
+        </select><br>
           
-        <button type="submit">Přidat</button>
+        <button class="btnSave btn btn-primary" type="submit">Vytvořit klienta/poradce</button>
       </form>
     </div>
     <div class="modal-footer"></div>
@@ -75,36 +77,36 @@
 <div id="myModal" class="modal" [style.display]="modalUpdateIsHidden ? 'block' : 'none'">
   <div class="modal-content">
     <div class="modal-header">
+      <h3>Úprava klienta</h3>
       <span class="close" (click)="hideModal()">&times;</span>
-      <h2>Přidání klienta nebo poradce</h2>
     </div>
     <div class="modal-body">
       <form [formGroup]="clientUpdateForm" (ngSubmit)="saveData(editClientsData)">
-        <label for="first-name">Jméno: </label>
-        <input id="first-name" type="text" formControlName="firstName">
+        <label for="first-name">Jméno: </label><br>
+        <input id="first-name" type="text" formControlName="firstName"><br>
       
-        <label for="last-name">Přijmení: </label>
-        <input id="last-name" type="text" formControlName="lastName">
+        <label for="last-name">Přijmení: </label><br>
+        <input id="last-name" type="text" formControlName="lastName"><br>
       
-        <label for="last-name">Email: </label>
-        <input id="last-name" type="text" formControlName="email">
+        <label for="last-name">Email: </label><br>
+        <input id="last-name" type="text" formControlName="email"><br>
       
-        <label for="last-name">Mobil: </label>
-        <input id="last-name" type="number" formControlName="mobile">
+        <label for="last-name">Mobil: </label><br>
+        <input id="last-name" type="number" formControlName="mobile"><br>
       
-        <label for="last-name">Rodné číslo: </label>
-        <input id="last-name" type="text" formControlName="rc">
+        <label for="last-name">Rodné číslo: </label><br>
+        <input id="last-name" type="text" formControlName="rc"><br>
       
-        <label for="last-name">Věk: </label>
-        <input id="last-name" type="number" formControlName="age">
+        <label for="last-name">Věk: </label><br>
+        <input id="last-name" type="number" formControlName="age"><br>
 
-        <label for="last-name">Poradcový status (0 - klient, 1 - poradce): </label>
+        <label for="last-name">Poradcový status: </label><br>
         <select formControlName="adviserStatus">
           <option value="1">Poradce</option>
           <option value="0">Klient</option>
-        </select>
+        </select><br>
 
-        <button type="submit">Update Data</button>
+        <button class="btnSave btn btn-primary" type="submit">Uložit data</button>
       </form>
     </div>
     <div class="modal-footer"></div>

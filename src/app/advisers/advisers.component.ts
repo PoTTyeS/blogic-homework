@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ClientsService } from '../clients.service';
 import { IClientData } from 'src/interfaces/IClient';
 import { Router } from '@angular/router';
+import { CSVService } from '../csv.service';
 
 @Component({
   selector: 'app-advisers',
@@ -31,6 +32,7 @@ export class AdvisersComponent implements OnInit {
     private apiServer: ApiService,
     private clientsService: ClientsService,
     private router: Router,
+    private csvService: CSVService
   ) { }
   
   /* New Client Form for Update data */
@@ -119,5 +121,13 @@ export class AdvisersComponent implements OnInit {
   hideModal(): void {
     this.modalUpdateIsHidden = !this.modalUpdateIsHidden;
   }
+
+  /**
+   * Export contracts to CSV
+   */
+   exportToCSV() {
+    this.csvService.saveCSV(this.clientsData, '[Poradci] ');
+  }
+
 
 }

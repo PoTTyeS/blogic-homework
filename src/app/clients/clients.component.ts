@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ClientsService } from '../clients.service';
 import { IClientData } from 'src/interfaces/IClient';
 import { Router } from '@angular/router';
+import { CSVService } from '../csv.service';
 
 @Component({
   selector: 'app-clients',
@@ -32,6 +33,7 @@ export class ClientsComponent implements OnInit {
     private apiServer: ApiService,
     private clientsService: ClientsService,
     private router: Router,
+    private csvService: CSVService
   ) { }
   
   /* New Client Form */
@@ -179,6 +181,13 @@ export class ClientsComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['/clients']);
+  }
+
+  /**
+   * Export contracts to CSV
+   */
+   exportToCSV() {
+    this.csvService.saveCSV(this.clientsData, '[Klienti] ');
   }
 
 }

@@ -1,5 +1,8 @@
 <app-menu></app-menu>
 <div class="content">
+  <div class="content-header-flex items-end">
+    <button (click)="exportToCSV()" class="btn buttonCreate btn-warning right">Export CSV</button>
+  </div>
   <table class="table table-striped">  
     <thead>  
       <tr>  
@@ -32,31 +35,31 @@
     </div>
     <div class="modal-body">
       <form [formGroup]="clientUpdateForm" (ngSubmit)="saveData(editClientsData)">
-        <label>Jméno: </label>
-        <input type="text" formControlName="firstName">
+        <label>Jméno: </label><br>
+        <input type="text" formControlName="firstName"><br>
         
-        <label>Přijmení: </label>
-        <input type="text" formControlName="lastName">
+        <label>Přijmení: </label><br>
+        <input type="text" formControlName="lastName"><br>
         
-        <label>Email: </label>
-        <input type="text" formControlName="email">
+        <label>Email: </label><br>
+        <input type="text" formControlName="email"><br>
         
-        <label>Mobil: </label>
-        <input type="number" formControlName="mobile">
+        <label>Mobil: </label><br>
+        <input type="number" formControlName="mobile"><br>
         
-        <label>Rodné číslo: </label>
-        <input type="text" formControlName="rc">
+        <label>Rodné číslo: </label><br>
+        <input type="text" formControlName="rc"><br>
         
-        <label>Věk: </label>
-        <input type="number" formControlName="age">
+        <label>Věk: </label><br>
+        <input type="number" formControlName="age"><br>
 
-        <label>Poradcový status (0 - klient, 1 - poradce): </label>
+        <label>Poradcový status: </label><br>
         <select formControlName="adviserStatus">
           <option value="1">Poradce</option>
           <option value="0">Klient</option>
-        </select>
+        </select><br>
             
-        <button type="submit">Update Data</button>
+        <button class="btn btn-primary btnSave" type="submit">Update Data</button>
       </form>
     </div>
     <div class="modal-footer"></div>

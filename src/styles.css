@@ -7,11 +7,22 @@
   padding:0px 35px 0px 35px;
 }
 
+.content .content-header-flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.items-end {
+  align-items: flex-end!important;
+  justify-content: end!important;
+}
+
 .buttonCreate{
   margin-top: 15px;
   margin-bottom: 15px;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .content{ 
     width: 100%; 
     padding:0px 10px 0px 10px;
@@ -21,6 +32,7 @@
     display: flex;
     flex-direction: column;
   }
+  .modal-content {width: 90% !important;}
 }
 
 
@@ -43,7 +55,7 @@
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;

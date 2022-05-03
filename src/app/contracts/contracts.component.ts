@@ -6,6 +6,7 @@ import { ApiService } from '../api.service';
 import { ClientsService } from '../clients.service';
 import { IContractData } from 'src/interfaces/IContract';
 import { IDropdownSettings, } from 'ng-multiselect-dropdown';
+import { CSVService } from '../csv.service';
 
 @Component({
   selector: 'app-contracts',
@@ -38,6 +39,7 @@ export class ContractsComponent implements OnInit {
     private apiServer: ApiService,
     private clientsService: ClientsService,
     private router: Router,
+    private csvService: CSVService
   ) { }
 
   /* Contract form  */
@@ -86,6 +88,11 @@ export class ContractsComponent implements OnInit {
     /* Getting data for display all contracts */
     const data = await this.apiServer.get({ url: '/contracts'});
     this.contractsData = data?.results;
+    this.contractsData.map((item: any) => {
+      item.members = JSON.parse(item.members);
+      item.manager = JSON.parse(item.manager);
+      return item;
+    });
   }
 
   /**
@@ -163,8 +170,8 @@ export class ContractsComponent implements OnInit {
     dateClosed: this.contractUpdateForm.value.dateClosed,
     dateExpiration: this.contractUpdateForm.value.dateExpiration,
     dateEnd: this.contractUpdateForm.value.dateEnd,
-    contractMembers: this.contractUpdateForm.value.contractMembers,
-    contractManager: this.contractUpdateForm.value.contractManager
+    contractMembers: JSON.stringify(this.contractUpdateForm.value.contractMembers),
+    contractManager: JSON.stringify(this.contractUpdateForm.value.contractManager)
   }
 
   // Send data to server and edit client
@@ -193,4 +200,12 @@ export class ContractsComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate(['/contracts']);
   }
+
+  /**
+   * Export contracts to CSV
+   */
+  exportToCSV() {
+    this.csvService.saveCSV(this.contractsData, '[Smlouvy] ');
+  }
+
 }
