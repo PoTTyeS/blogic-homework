@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IContractData } from 'src/interfaces/IContract';
 import { ApiService } from '../api.service';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-contract-detail',
@@ -25,8 +26,13 @@ export class ContractDetailComponent implements OnInit {
 
   constructor(
     private apiServer: ApiService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private clientService: ClientService,
+    private router: Router,
+  ) { 
+    if(this.clientService.isLogged == false)
+      this.router.navigate(['/']);
+  }
 
   ngOnInit(): void { 
 

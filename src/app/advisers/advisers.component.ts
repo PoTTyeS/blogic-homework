@@ -5,6 +5,7 @@ import { ClientsService } from '../clients.service';
 import { IClientData } from 'src/interfaces/IClient';
 import { Router } from '@angular/router';
 import { CSVService } from '../csv.service';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-advisers',
@@ -31,9 +32,13 @@ export class AdvisersComponent implements OnInit {
   constructor(
     private apiServer: ApiService,
     private clientsService: ClientsService,
+    private csvService: CSVService,
+    private clientService: ClientService,
     private router: Router,
-    private csvService: CSVService
-  ) { }
+  ) { 
+    if(this.clientService.isLogged == false)
+      this.router.navigate(['/']);
+  }
   
   /* New Client Form for Update data */
   clientUpdateForm = new FormGroup({

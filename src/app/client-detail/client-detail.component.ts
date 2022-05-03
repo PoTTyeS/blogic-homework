@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClientsService } from '../clients.service';
 import { ApiService } from '../api.service';
 import { IClientData } from 'src/interfaces/IClient';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-client-detail',
@@ -27,8 +28,13 @@ export class ClientDetailComponent implements OnInit {
 
   constructor(
     private apiServer: ApiService,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private clientService: ClientService,
+    private router: Router,
+  ) { 
+    if(this.clientService.isLogged == false)
+      this.router.navigate(['/']);
+  }
 
   ngOnInit(): void { 
     

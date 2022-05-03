@@ -7,6 +7,7 @@ import { ClientsService } from '../clients.service';
 import { IContractData } from 'src/interfaces/IContract';
 import { IDropdownSettings, } from 'ng-multiselect-dropdown';
 import { CSVService } from '../csv.service';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-contracts',
@@ -38,9 +39,13 @@ export class ContractsComponent implements OnInit {
   constructor(
     private apiServer: ApiService,
     private clientsService: ClientsService,
+    private clientService: ClientService,
     private router: Router,
     private csvService: CSVService
-  ) { }
+  ) { 
+    if(this.clientService.isLogged == false)
+      this.router.navigate(['/']);
+  }
 
   /* Contract form  */
   contractForm = new FormGroup({

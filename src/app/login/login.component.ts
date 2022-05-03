@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
     private clientService: ClientService
   ) { };
 
+    logStatus:number;
+
   ngOnInit(): void { 
   };
 
@@ -29,7 +31,6 @@ export class LoginComponent implements OnInit {
   });
 
   async onSubmit(){
-
     // Data from Login form
     let userData = {
       username: this.loginForm.value.username,
@@ -41,19 +42,17 @@ export class LoginComponent implements OnInit {
       url: '/login',
       data: userData
     });
-
-    // Save data into localStorage
-    this.clientService.initClientData(data);
-    
-    // Redirect
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/contracts']);
-    
-
-    // Response data 
-    console.log(data);
-    
+    if(data["status"] == 0){
+      this.logStatus = 1;
+    } else {
+      // Save data into localStorage
+      this.clientService.initClientData(data);
+          
+      // Redirect
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['/contracts']);
+    }
   };
 };
 

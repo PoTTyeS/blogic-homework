@@ -1,5 +1,9 @@
 <app-menu></app-menu>
 
+<div *ngIf="logStatus == 1"> 
+    Zkus zadat jméno/heslo znovu
+</div>
+
 <div class="login-content">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"><br>
         <input type="text" placeholder="Uživatelské jméno" formControlName="username">
