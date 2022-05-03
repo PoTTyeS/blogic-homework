@@ -35,7 +35,6 @@ import { HeaderComponent } from './header/header.component';
     AdvisersComponent,
     EditContractComponent,
     LogoutComponent,
-    ContractDetailComponent,
     HeaderComponent,
   ],
   imports: [

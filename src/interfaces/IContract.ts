@@ -7,6 +7,6 @@ export interface IContractData {
     date_closed: string;
     date_expiration: string;
     date_end: string;
-    members: string;
-    manager: string;
+    members: any;
+    manager: any;
 }

@@ -11,6 +11,17 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
+@media screen and (max-width: 700px) {
+  .content{ 
+    width: 100%; 
+    padding:0px 10px 0px 10px;
+  }
+  .header-logo{width: 100% !important;}
+  tr{
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 
 .modal {

@@ -2,66 +2,63 @@
 <div class="content">
   <table class="table table-striped">  
     <thead>  
-        <tr>  
-          <th>Jméno</th>  
-          <th>Přijmení</th>  
-          <th>Email</th>  
-          <th>Nástroje</th>  
-        </tr>  
+      <tr>  
+        <th>Jméno poradce</th>  
+        <th>Přijmení</th>  
+        <th>Email</th>  
+        <th>Nástroje</th>  
+      </tr>  
     </thead>  
     <tbody>  
-        <tr *ngFor="let clientData of clientsData"><td>
-            <a href="clients/detail/{{ clientData.id }}">{{ clientData.firstName }}</a></td>
-            <td>{{ clientData.lastName }}</td>
-            <td>{{ clientData.email }}</td>
-            <td>
-                <button class="btn btn-warning" (click)="editClient( clientData.id )">Edit</button> &nbsp;
-                <button class="btn btn-danger"  (click)="removeClient( clientData.id )">Remove</button>
-            </td>
-        </tr>
+      <tr *ngFor="let clientData of clientsData"><td>
+        <a href="clients/detail/{{ clientData.id }}">{{ clientData.firstName }}</a></td>
+        <td>{{ clientData.lastName }}</td>
+        <td>{{ clientData.email }}</td>
+        <td>
+            <button class="btn btn-warning" (click)="editClient( clientData.id )">Edit</button> &nbsp;
+            <button class="btn btn-danger"  (click)="removeClient( clientData.id )">Remove</button>
+        </td>
+      </tr>
     </tbody>  
   </table>  
 </div>
 
 <!-- The Modal for update Client/Adviser -->
 <div id="myModal" class="modal" [style.display]="modalUpdateIsHidden ? 'block' : 'none'">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close" (click)="hideModal()">&times;</span>
-        <h2>Přidání klienta nebo poradce</h2>
-      </div>
-      <div class="modal-body">
-          <form [formGroup]="clientUpdateForm" (ngSubmit)="saveData(editClientsData)">
-  
-              <label for="first-name">Jméno: </label>
-              <input id="first-name" type="text" formControlName="firstName">
-          
-              <label for="last-name">Přijmení: </label>
-              <input id="last-name" type="text" formControlName="lastName">
-          
-              <label for="last-name">Email: </label>
-              <input id="last-name" type="text" formControlName="email">
-          
-              <label for="last-name">Mobil: </label>
-              <input id="last-name" type="number" formControlName="mobile">
-          
-              <label for="last-name">Rodné číslo: </label>
-              <input id="last-name" type="text" formControlName="rc">
-          
-              <label for="last-name">Věk: </label>
-              <input id="last-name" type="number" formControlName="age">
-  
-              <label for="last-name">Poradcový status (0 - klient, 1 - poradce): </label>
-              <select formControlName="adviserStatus">
-                <option value="1">Poradce</option>
-                <option value="0">Klient</option>
-              </select>
-              
-              <button type="submit">Update Data</button>
-          </form>
-      </div>
-      <div class="modal-footer"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Přidání klienta nebo poradce</h2>
+      <span class="close" (click)="hideModal()">&times;</span>
     </div>
+    <div class="modal-body">
+      <form [formGroup]="clientUpdateForm" (ngSubmit)="saveData(editClientsData)">
+        <label>Jméno: </label>
+        <input type="text" formControlName="firstName">
+        
+        <label>Přijmení: </label>
+        <input type="text" formControlName="lastName">
+        
+        <label>Email: </label>
+        <input type="text" formControlName="email">
+        
+        <label>Mobil: </label>
+        <input type="number" formControlName="mobile">
+        
+        <label>Rodné číslo: </label>
+        <input type="text" formControlName="rc">
+        
+        <label>Věk: </label>
+        <input type="number" formControlName="age">
+
+        <label>Poradcový status (0 - klient, 1 - poradce): </label>
+        <select formControlName="adviserStatus">
+          <option value="1">Poradce</option>
+          <option value="0">Klient</option>
+        </select>
+            
+        <button type="submit">Update Data</button>
+      </form>
+    </div>
+    <div class="modal-footer"></div>
   </div>
+</div>

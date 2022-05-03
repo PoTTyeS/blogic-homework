@@ -48,14 +48,17 @@ export class ContractDetailComponent implements OnInit {
     // call function that send id to server and server returns data of client/adviser
     const data = await this.apiServer.post({ url: '/detailContract', data:id});
     
-    // Getting data from JSON string
-    Promise.resolve(data).then(d => {
-      console.log(d["results"][0]);
-      this.detailContractData = d["results"][0];
-    });
+    this.detailContractData = data.results[0];
+    this.detailContractData.members = JSON.parse(data.results[0].members);
+    this.detailContractData.manager = JSON.parse(data.results[0].manager);
+
+    console.log(this.detailContractData)
+    for(const item of this.detailContractData.members) {
+      console.log(item);
+    }
   
     // return data
-      return this.detailContractData;
+    return this.detailContractData;
   }
 
 }

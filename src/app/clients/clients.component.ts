@@ -70,9 +70,9 @@ export class ClientsComponent implements OnInit {
    * @param id 
    * @returns User data
    */
-  async editClient(id:number){
+  editClient(id:number){
     this.modalUpdateIsHidden = !this.modalUpdateIsHidden;  
-    const editClientData = await this.apiServer.post({ url: '/detailClient', data:id});
+    const editClientData = this.apiServer.post({ url: '/detailClient', data:id});
     
     Promise.resolve(editClientData).then(d => {
       this.editClientsData = d["results"][0];
@@ -126,6 +126,7 @@ export class ClientsComponent implements OnInit {
   /**
    * call function for client delete
    * @param id 
+   * @returns - redirect
    */
   async removeClient(id:number){
     this.clientsService.removeClient(id);
@@ -155,8 +156,9 @@ export class ClientsComponent implements OnInit {
    * @param rc personal identification number
    * @param age age of client/adviser
    * @param adviserStatus identification if human is client or adviser (0 - client, 1 - adviser)
+   * @returns redirect
    */
-  async onSubmit(){
+  onSubmit(){
     
     // future client data
     const userData: IClientData = {

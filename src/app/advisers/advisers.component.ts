@@ -73,8 +73,12 @@ export class AdvisersComponent implements OnInit {
     });
   }
 
+  /**
+   * Save edited data
+   * @param editClientData - edited client data
+   * @returns redirect
+   */
   async saveData(data: IClientData){
-
     const updatedUserData: IClientData = {
       id: this.editClientsData["id"],
       firstName: this.clientUpdateForm.value.firstName,
@@ -86,6 +90,7 @@ export class AdvisersComponent implements OnInit {
       adviserStatus: this.clientUpdateForm.value.adviserStatus
     }
 
+    /* Send data to backend */
     const res = await this.apiServer.post({
       url: '/editClient',
       data: updatedUserData
@@ -97,6 +102,11 @@ export class AdvisersComponent implements OnInit {
     this.router.navigate(['/advisers']);
   }
 
+  /**
+   * call function for client remove
+   * @param id - id of client to remove
+   * @returns redirect
+   */
   async removeClient(id:number){
     this.clientsService.removeClient(id);
 

@@ -6,6 +6,13 @@
     <b>Datum uzavření:</b> {{detailContractData.date_closed}}<br>
     <b>Datum platnosti:</b> {{detailContractData.date_expiration}}<br>
     <b>Datum ukončení:</b> {{detailContractData.date_end}}<br>
-    <b>Účastníci:</b> {{detailContractData.members}}<br>
-    <b>Správce smlouvy:</b> {{detailContractData.manager}}<br>
+    <b>Účastníci: </b> 
+    <span *ngFor="let item of detailContractData.members">
+        <a href="/clients/detail/{{ item.item_id }}">{{ item.item_text }}</a><br>
+    </span><br>
+    <b>Správce smlouvy: </b>
+    <span *ngFor="let item of detailContractData.manager">
+        <a href="/clients/detail/{{ item.item_id }}">{{ item.item_text }}</a><br> 
+    </span><br>
+
 </div>

@@ -6,8 +6,9 @@ import { IClient } from 'src/interfaces/IClient';
 })
 
 export class ClientService {
-
+  /* Variable */
   isLogged: boolean = false;
+
   constructor() {
     if((window.localStorage.getItem('token') || "").length > 0) {
       this.isLogged = true;
@@ -22,6 +23,7 @@ export class ClientService {
     this.isLogged = true;
   };
 
+  /* Clear token and logged user's data */
   clearClientData(){
     window.localStorage.setItem('token', "");
     window.localStorage.setItem('data', "");
