@@ -48,26 +48,26 @@ export class ContractsComponent implements OnInit {
 
   /* Contract form  */
   contractForm = new FormGroup({
-    registrationNumber: new FormControl(''),
-    institution: new FormControl(''),
-    client: new FormControl(''),
-    dateClosed: new FormControl(''),
-    dateExpiration: new FormControl(''),
-    dateEnd: new FormControl(''),
-    contractMembers: new FormControl(''),
-    contractManager: new FormControl(''),
+    registrationNumber: new FormControl('', [Validators.required]),
+    institution: new FormControl('', [Validators.required]),
+    client: new FormControl('', [Validators.required]),
+    dateClosed: new FormControl('', [Validators.required]),
+    dateExpiration: new FormControl('', [Validators.required]),
+    dateEnd: new FormControl('', [Validators.required]),
+    contractMembers: new FormControl('', [Validators.required]),
+    contractManager: new FormControl('', [Validators.required]),
   });
 
   /* Contract edit form */
   contractUpdateForm = new FormGroup({
-    registrationNumber: new FormControl(''),
-    institution: new FormControl(''),
-    client: new FormControl(''),
-    dateClosed: new FormControl(''),
-    dateExpiration: new FormControl(''),
-    dateEnd: new FormControl(''),
-    contractMembers: new FormControl(''),
-    contractManager: new FormControl(''),
+    registrationNumber: new FormControl('', [Validators.required]),
+    institution: new FormControl('', [Validators.required]),
+    client: new FormControl('', [Validators.required]),
+    dateClosed: new FormControl('', [Validators.required]),
+    dateExpiration: new FormControl('', [Validators.required]),
+    dateEnd: new FormControl('', [Validators.required]),
+    contractMembers: new FormControl('', [Validators.required]),
+    contractManager: new FormControl('', [Validators.required]),
   });
 
   async ngOnInit() {
@@ -107,7 +107,7 @@ export class ContractsComponent implements OnInit {
   editContract(id:number){
     this.modalIsHidden1 = !this.modalIsHidden1;  
     const conctractDataEdited = this.apiServer.post({ url: '/detailContract', data:id});
-    
+    if(this.contractUpdateForm.invalid) return;
     Promise.resolve(conctractDataEdited).then(d => {
       this.conctractsDataEdited = d.results[0];
       this.contractUpdateForm.controls['registrationNumber'].setValue(d.results[0].registration_number);
@@ -139,6 +139,8 @@ export class ContractsComponent implements OnInit {
    * @returns - redirect and it shows that data were added
    */
   addContract(){
+    if(this.contractForm.invalid) return;
+
     this.conctractDataNew = {
       registrationNumber: this.contractForm.value.registrationNumber,
       institution: this.contractForm.value.institution,

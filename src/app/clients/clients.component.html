@@ -41,27 +41,27 @@
       <span class="close" (click)="showModal()">&times;</span>
     </div>
     <div class="modal-body">
-      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="clientForm" novalidate (ngSubmit)="onSubmit()">
         <label>Jméno: </label><br>
-        <input type="text" formControlName="firstName"><br>
+        <input type="text" required formControlName="firstName"><br>
       
         <label>Přijmení: </label><br>
-        <input type="text" formControlName="lastName"><br>
+        <input type="text" required formControlName="lastName"><br>
       
         <label>Email: </label><br>
-        <input type="text" formControlName="email"><br>
+        <input type="text" required formControlName="email"><br>
       
         <label>Mobil: </label><br>
-        <input type="number" formControlName="mobile"><br>
+        <input type="number" required formControlName="mobile"><br>
       
         <label>Rodné číslo: </label><br>
-        <input type="text" formControlName="rc"><br>
+        <input type="text" required formControlName="rc"><br>
       
         <label>Věk: </label><br>
-        <input type="number" formControlName="age"><br>
+        <input type="number" required formControlName="age"><br>
 
         <label>Poradcový status: </label><br>
-        <select formControlName="adviserStatus">
+        <select formControlName="adviserStatus" required>
           <option value="1">Poradce</option>
           <option value="0">Klient</option>
         </select><br>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClientsService } from '../clients.service';
 import { IClientData } from 'src/interfaces/IClient';
 import { Router } from '@angular/router';
@@ -42,13 +42,13 @@ export class AdvisersComponent implements OnInit {
   
   /* New Client Form for Update data */
   clientUpdateForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    mobile: new FormControl(''),
-    rc: new FormControl(''),
-    age: new FormControl(''),
-    adviserStatus: new FormControl(''),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    mobile: new FormControl('', [Validators.required]),
+    rc: new FormControl('', [Validators.required]),
+    age: new FormControl('', [Validators.required]),
+    adviserStatus: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -86,6 +86,9 @@ export class AdvisersComponent implements OnInit {
    * @returns redirect
    */
   async saveData(data: IClientData){
+    
+    if(this.clientUpdateForm.invalid) return;
+
     const updatedUserData: IClientData = {
       id: this.editClientsData["id"],
       firstName: this.clientUpdateForm.value.firstName,
