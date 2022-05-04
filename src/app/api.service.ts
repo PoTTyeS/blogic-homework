@@ -10,7 +10,7 @@ import { IApiProps, IApiResponse } from 'src/interfaces/IApi';
 export class ApiService {
 
     /* Variables */
-    baseURL: string = "http://localhost:3000"; 
+    baseURL: string = "https://blogic-homework.vercel.app/"; 
 
     constructor(private http: HttpClient) { }
 
